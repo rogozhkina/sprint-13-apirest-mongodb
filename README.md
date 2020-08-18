@@ -8,4 +8,4 @@
 
 #### Стэк технологий:
 
-Терминал, Git, API, MongoDB, Compass
+Терминал, Git, API, MongoDB, Compass, Postman
