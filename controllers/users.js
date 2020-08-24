@@ -25,7 +25,7 @@ module.exports.createUser = (req, res) => {
     .then((user) => res.send({ data: user }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        res.status(404).send({ message: 'Невалидные данные' });
+        res.status(400).send({ message: 'Невалидные данные' });
       } else {
         res.status(500).send({ message: 'На сервере произошла ошибка' });
       }
