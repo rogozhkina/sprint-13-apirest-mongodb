@@ -8,4 +8,3 @@ router.post('/', createCard);
 router.delete('/:id', deleteCardById);
 
 module.exports = router;
-

@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(url) {
-        return validator.isURL(url)
+        return validator.isURL(url);
       }
     }
   }

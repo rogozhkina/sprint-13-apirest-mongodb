@@ -13,7 +13,7 @@ const cardSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(link) {
-        return validator.isURL(link)
+        return validator.isURL(link);
       }
     }
   },
@@ -32,6 +32,6 @@ const cardSchema = new mongoose.Schema({
     required: true,
     default: Date.now
   },
-})
+});
 
 module.exports = mongoose.model('card', cardSchema);
