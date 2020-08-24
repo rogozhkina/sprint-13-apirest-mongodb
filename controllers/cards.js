@@ -23,9 +23,13 @@ module.exports.createCard = (req, res) => {
 
 module.exports.deleteCardById = (req, res) => {
   Card.findByIdAndRemove(req.params.id)
-    .then((card) => res.send({ data: card }))
+    .then((card) => {
+      card.remove();
+      res.send({ data: card });
+    })
     .catch((err) => {
-      if (err.name === 'CastError') {
+      console.log(err.name);
+      if (err.name === 'CastError' || err.name === 'TypeError') {
         res.status(404).send({ message: 'Карточка не найдена' });
       } else {
         res.status(500).send({ message: 'На сервере произошла ошибка' });

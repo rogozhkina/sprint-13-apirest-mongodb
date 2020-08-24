@@ -1,4 +1,3 @@
-const { Mongoose } = require('mongoose');
 const User = require('../models/user');
 
 module.exports.getUsers = (req, res) => {
@@ -9,8 +8,15 @@ module.exports.getUsers = (req, res) => {
 
 module.exports.getUserById = (req, res) => {
   User.findById(req.params.userId)
-    .then((user) => { res.send({ data: user }); })
+    .then((user) => {
+      if (user != null) {
+        res.send({ data: user });
+      } else {
+        res.status(404).send({ message: 'Пользователь не найден' });
+      }
+    })
     .catch((err) => {
+      console.log(err.name);
       if (err.name === 'CastError') {
         res.status(404).send({ message: 'Пользователь не найден' });
       } else {
